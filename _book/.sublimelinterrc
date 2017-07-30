@@ -1,0 +1,11 @@
+{
+    "linters": {
+        "eslint": {
+            "excludes": [
+                "**/node_modules/**",
+                "**/build/*.js",
+                "**/config/*.js"
+            ]
+        }
+    }
+}
