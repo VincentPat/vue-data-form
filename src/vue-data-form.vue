@@ -12,7 +12,7 @@
         <!-- 内容 -->
         <div class="vdf__content">
             <vdf-element
-                v-for="(element, index) in elements"
+                v-for="(element, index) in config"
                 @change="change"
                 :labelWidth="labelWidth"
                 :key="index"
@@ -31,7 +31,6 @@
 
 <script>
 import vdfElement from './vue-data-form-element';
-import vdfEventBus from './vdf-event-bus';
 
 export default {
     name: 'vdf',
@@ -55,6 +54,7 @@ export default {
     },
     data() {
         return {
+            config: [],
             dist: {},
             initialDist: {}
         };
@@ -66,11 +66,11 @@ export default {
         },
         // 设置最终输出数据
         setDist() {
-            this.elements.forEach((element) => {
-                this.dist[element.id] = element.dist;
+            this.config.forEach((element) => {
+                this.$set(this.dist, element.id, Object.assign({}, element.dist));
             });
-            this.elements.forEach((element) => {
-                this.initialDist[element.id] = Object.assign({}, element.dist);
+            this.config.forEach((element) => {
+                this.$set(this.initialDist, element.id, Object.assign({}, element.dist));
             });
         },
         // 保存
@@ -79,27 +79,29 @@ export default {
         },
         // 重置
         reset() {
-            this.elements.forEach((element) => {
+            this.config.forEach((element, index) => {
                 const id = element.id;
                 const data = this.initialDist[id];
                 // 编辑数据
                 element.dist = Object.assign({}, data);
                 // 输出数据
                 this.dist[id] = Object.assign({}, data);
-                // 派发事件
-                vdfEventBus.$emit(`reset-${id}`, data);
             });
             this.$emit('reset');
+        },
+        // 初始化
+        init() {
+            this.config = this.elements;
+            this.setDist();
         }
     },
     watch: {
         elements() {
-            this.setDist();
+            this.init();
         }
     },
     mounted() {
-        this.setDist();
-        console.log(window.vdf = this);
+        this.init();
     }
 };
 </script>

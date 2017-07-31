@@ -7,8 +7,6 @@
 </template>
 
 <script>
-import vdfEventBus from '../vdf-event-bus';
-
 export default {
     name: 'vdf-input',
     props: {
@@ -30,10 +28,13 @@ export default {
             });
         }
     },
-    mounted() {
-        vdfEventBus.$on(`reset-${this.config.id}`, (data) => {
-            this.value = data.value;
-        });
+    watch: {
+        config: {
+            handler: function(value) {
+                this.value = this.config.dist.value;
+            },
+            deep: true
+        }
     }
 };
 </script>
