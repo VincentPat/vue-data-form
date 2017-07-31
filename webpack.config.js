@@ -6,16 +6,16 @@ function resolve (dir) {
 }
 
 // development
-var entry = './src/main.js';
+var entry = './src/dev.js';
 var output = {
     path: path.resolve(__dirname, './dist'),
-    publicPath: '/demo/',
-    filename: 'main.js'
+    publicPath: '/dev/',
+    filename: 'dev.js'
 };
 
 // production
 if (process.env.NODE_ENV === 'production') {
-    entry = './src/index.js';
+    entry = './index.js';
     output = {
         path: path.resolve(__dirname, './dist'),
         publicPath: '/dist/',
