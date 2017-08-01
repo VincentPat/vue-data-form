@@ -1,9 +1,8 @@
 {
   "name": "vue-data-form",
-  "description": "A Vue.js project",
+  "description": "vue-data-form, is a data-driven form component based on Vue.js and ElementUI",
   "version": "1.0.0",
   "author": "VincentPat <hys510573094@gmail.com>",
-  "private": true,
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --content-base ./dev/ --open --hot",
     "demo": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
