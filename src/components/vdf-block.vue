@@ -30,15 +30,3 @@ export default {
     }
 };
 </script>
-
-<style lang="scss">
-.vdf-block {
-    margin-top: 20px;
-    &:first-child {
-        margin-top: 0px;
-    }
-    &__name {
-        line-height: 36px;
-    }
-}    
-</style>

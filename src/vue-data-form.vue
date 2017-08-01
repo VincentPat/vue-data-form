@@ -31,6 +31,7 @@
 
 <script>
 import vdfElement from './vue-data-form-element.js';
+import './vue-data-form.scss';
 
 export default {
     name: 'vdf',
@@ -105,23 +106,3 @@ export default {
     }
 };
 </script>
-
-<style lang="scss">
-.vdf {
-    padding: 20px;
-    border: 1px solid #bfcbd9;
-    &__title {
-        margin: 20px 0px;
-        font-weight: bold;
-    }
-    &__content {
-        padding: 10px 0px;
-        margin: 20px 0px;
-        border-radius: 4px;
-        background: white;
-    }
-    &__actions {
-        margin-top: 20px;
-    }
-}
-</style>
