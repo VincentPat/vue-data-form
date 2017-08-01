@@ -31,7 +31,7 @@
 
 <script>
 import vdfElement from './vue-data-form-element.js';
-import './vue-data-form.scss';
+import './style/vue-data-form.css';
 
 export default {
     name: 'vdf',
@@ -92,8 +92,10 @@ export default {
         },
         // 初始化
         init() {
-            this.config = this.elements;
-            this.setDist();
+            if (this.elements) {
+                this.config = this.elements;
+                this.setDist();
+            }
         }
     },
     watch: {
