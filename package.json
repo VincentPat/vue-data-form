@@ -1,9 +1,12 @@
 {
   "name": "vue-data-form",
   "description": "vue-data-form, is a data-driven form component based on Vue.js and ElementUI",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "keywords": [
-    "vue", "form", "data-drive", "element-ui"
+    "vue",
+    "form",
+    "data-drive",
+    "element-ui"
   ],
   "author": "VincentPat <hys510573094@gmail.com>",
   "scripts": {
