@@ -2,6 +2,9 @@
   "name": "vue-data-form",
   "description": "vue-data-form, is a data-driven form component based on Vue.js and ElementUI",
   "version": "1.0.4",
+  "keywords": [
+    "vue", "form", "data-drive", "element-ui"
+  ],
   "author": "VincentPat <hys510573094@gmail.com>",
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --content-base ./dev/ --open --hot",
@@ -12,6 +15,7 @@
     "element-ui": "^1.4.1",
     "vue": "^2.3.3"
   },
+  "unpkg": "dist/vue-data-form.js",
   "devDependencies": {
     "babel-core": "^6.0.0",
     "babel-loader": "^6.0.0",
