@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import vdfElement from './vue-data-form-element';
+import vdfElement from './vue-data-form-element.js';
 
 export default {
     name: 'vdf',

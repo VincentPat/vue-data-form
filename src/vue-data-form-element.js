@@ -1,5 +1,5 @@
-import input from './components/vdf-input';
-import block from './components/vdf-block';
+import input from './components/vdf-input.vue';
+import block from './components/vdf-block.vue';
 
 export default {
     name: 'vdf-element',
