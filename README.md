@@ -28,28 +28,14 @@ In summary, vdf can helps us realize forms in a standard, easy way.
 
 ---
 
-> A Vue.js project
+## Quick-Start
 
-## Build Setup
-
-``` bash
-# install dependencies
-npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
-
-# run unit tests
-npm run unit
-
-# run all tests
-npm test
+#### 直接引入:
+```html
+<script src="https://unpkg.com/vue-data-form/dist/vue-data-form.js"></script>
 ```
 
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+#### import:
+```js
+import VueDataForm from 'vue-data-form'
+```
