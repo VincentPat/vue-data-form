@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>VDF-动态示例</title>
+        <!-- ElementUI 样式 -->
+        <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-default/index.css">
+        <!-- 先引入Vue -->
+        <script src="https://unpkg.com/vue/dist/vue.js"></script>
+        <!-- ElementUI -->
+        <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+        <!-- vue-data-form -->
+        <script src="/dist/vue-data-form.js"></script>
+        <!-- 示例样式 -->
+        <style>
+        html, body {
+            padding: 0;
+            margin: 0;
+            background: #FCFCFC;
+        }
+        #app {
+            width: 100vw;
+            height: 100vh;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .top {
+            height: 70%;
+        }
+        .bottom {
+            height: 30%;
+        }
+        .wrapper {
+            position: relative;
+            padding-top: 42px;
+        }
+        .title {
+            position: absolute;
+            margin: 10px 0px;
+            top: 0;
+            left: 0;
+        }
+        .input {
+            margin-right: 10px;
+        }
+        .input .el-textarea,
+        .input textarea {
+            height: 100%;
+        }
+        .present {
+            margin-left: 10px;
+        }
+        .output .el-textarea,
+        .output textarea {
+            height: 100%;
+        }
+        </style>
+    </head>
+    <body>
+        <div id="app">
+            <el-row class="top" type="flex">
+                <el-col :span="12" class="wrapper input">
+                    <h4 class="title">输入配置</h4>
+                    <el-input type="textarea" :rows="3" v-model="input" placeholder="请输入你的配置" resize="none" @change="inputChange"></el-input>
+                </el-col>
+                <el-col :span="12" class="wrapper present">
+                    <h4 class="title">渲染结果</h4>
+                    <vue-data-form
+                        id="myForm"
+                        title="数据表单"
+                        :elements="elements"
+                        @save="save"
+                        @reset="reset"></vue-data-form>
+                </el-col>
+            </el-row>
+            <el-row class="bottom" type="flex">
+                <el-col class="wrapper output">
+                    <h4 class="title">输出数据</h4>
+                    <el-input ref="output" type="textarea" :rows="3" v-model="output" readonly resize="none"></el-input>
+                </el-col>
+            </el-row>
+        </div>
+        <script>
+        new Vue({
+            el: '#app',
+            components: {
+                'vue-data-form': VueDataForm
+            },
+            data: function() {
+                return {
+                    input: '[{"id":"title","type":"input","name":"标题","dist":{"value":"VUE-DATA-FORM"}},{"id":"subTitle","type":"input","name":"副标题","dist":{"value":"这是一个神奇的表单"}},{"id":"desc","type":"input","name":"描述","dist":{"value":"这都是根据配置表来渲染的，不需要写js代码"}}]',
+                    output: '',
+                    elements: []
+                }
+            },
+            methods: {
+                // 保存
+                save: function(formData) {
+                    var output = '';
+                    output += 'Emit：save\n';
+                    output += '输出结果：\n';
+                    output += JSON.stringify(formData);
+                    output += '\n';
+                    output += '\n';
+                    this.print(output);
+                },
+                // 重置
+                reset: function(formData) {
+                    var output = '';
+                    output += 'Emit：reset\n';
+                    output += '输出结果：\n';
+                    output += JSON.stringify(formData);
+                    output += '\n';
+                    output += '\n';
+                    this.print(output);
+                },
+                print: function(content) {
+                    this.output += content;
+                    var self = this;
+                    this.$nextTick(function() {
+                        var textarea = self.$refs.output.$refs.textarea;
+                        textarea.scrollTop = textarea.scrollHeight;
+                    });
+                },
+                // 输入变更
+                inputChange: function() {
+                    var input = this.input.replace(/\s/ig, '');
+                    var inputObj;
+                    try {
+                        inputObj = JSON.parse(input);
+                    } catch(error) {
+                        console.warn(error.msg);
+                    }
+                    if (inputObj instanceof Array) {
+                        this.elements = inputObj;
+                    } else {
+                        this.elements = [];
+                    }
+                }
+            },
+            mounted: function() {
+                this.inputChange();
+            }
+        });
+        </script>
+    </body>
+</html>

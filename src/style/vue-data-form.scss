@@ -1,15 +1,16 @@
 .vdf {
     padding: 20px;
     border: 1px solid #bfcbd9;
+    border-radius: 4px;
+    background: white;
     &__title {
-        margin: 20px 0px;
+        margin: 10px 0px;
         font-weight: bold;
     }
     &__content {
         padding: 10px 0px;
         margin: 20px 0px;
         border-radius: 4px;
-        background: white;
     }
     &__actions {
         margin-top: 20px;

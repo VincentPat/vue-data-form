@@ -6,12 +6,24 @@ function resolve (dir) {
 }
 
 // development
-var entry = './src/dev.js';
-var output = {
-    path: path.resolve(__dirname, './dist'),
-    publicPath: '/dev/',
-    filename: 'dev.js'
-};
+if (process.env.NODE_ENV === 'development') {
+    var entry = './src/dev.js';
+    var output = {
+        path: path.resolve(__dirname, './dist'),
+        publicPath: '/dev/',
+        filename: 'dev.js'
+    };
+}
+
+// example
+if (process.env.NODE_ENV === 'example') {
+    var entry = './src/dev.js';
+    var output = {
+        path: path.resolve(__dirname, './dist'),
+        publicPath: '/examples/',
+        filename: 'dev.js'
+    };
+}
 
 // production
 if (process.env.NODE_ENV === 'production') {

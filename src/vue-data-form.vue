@@ -88,11 +88,19 @@ export default {
                 // 输出数据
                 this.dist[id] = Object.assign({}, data);
             });
-            this.$emit('reset');
+            this.$emit('reset', this.dist);
+        },
+        // 检查elements是否符合
+        checkElements() {
+            const o = this.elements.filter((item) => typeof item !== 'object').length <= 0;
+            if (!o) return false;
+            const t = this.elements.filter((item) => typeof item.type !== 'string').length <= 0;
+            if (!t) return false;
+            return true;
         },
         // 初始化
         init() {
-            if (this.elements) {
+            if (this.checkElements()) {
                 this.config = this.elements;
                 this.setDist();
             }

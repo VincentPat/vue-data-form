@@ -2,60 +2,13 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>vue-data-form</title>
-        <!-- 引入样式 -->
-        <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-default/index.css">
-        <!-- 先引入 Vue -->
-        <script src="https://unpkg.com/vue/dist/vue.js"></script>
-        <!-- ElementUI -->
-        <script src="https://unpkg.com/element-ui/lib/index.js"></script>
-        <!-- vue-data-form -->
-        <script src="/dist/vue-data-form.js"></script>
+        <title>VDF Examples</title>
     </head>
     <body>
-        <div id="app">
-            <vue-data-form
-                id="myForm"
-                title="数据表单"
-                :elements="elements"></vue-data-form>
-        </div>
-        <script>
-        new Vue({
-            el: '#app',
-            components: {
-                'vue-data-form': VueDataForm
-            },
-            data: function() {
-                return {
-                    elements: [
-                        {
-                            "id": "title",
-                            "type": "input",
-                            "name": "标题",
-                            "dist": {
-                                "value": "VUE-DATA-FORM"
-                            }
-                        },
-                        {
-                            "id": "subTitle",
-                            "type": "input",
-                            "name": "副标题",
-                            "dist": {
-                                "value": "这是一个神奇的表单"
-                            }
-                        },
-                        {
-                            "id": "desc",
-                            "type": "input",
-                            "name": "描述",
-                            "dist": {
-                                "value": "这都是根据配置表来渲染的，不需要写js代码"
-                            }
-                        }
-                    ]
-                }
-            }
-        });
-        </script>
+        <h2>VDF</h2>
+        <ul>
+            <li><a href="examples/static.html">静态示例</a></li>
+            <li><a href="examples/dynamic.html">动态示例</a></li>
+        </ul>
     </body>
 </html>
