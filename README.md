@@ -1,6 +1,6 @@
 # vue-data-form
 
-## Q&A
+## Introduction
 
 #### What is vue-data-form(vdf for short)?
 
@@ -20,12 +20,12 @@ In summary, vdf can helps us realize forms in a standard, easy way.
 
 ## Quick-Start
 
-#### script tag:
+##### script tag:
 ```html
 <script src="https://unpkg.com/vue-data-form/dist/vue-data-form.js"></script>
 ```
 
-#### import:
+##### import:
 ```js
 import VueDataForm from 'vue-data-form'
 ```
