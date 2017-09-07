@@ -32,6 +32,12 @@ import VueDataForm from 'vue-data-form'
 
 ---
 
+## Reference
+
+[Online Document](https://vincentpat.gitbooks.io/vue-data-form/content/)
+
+---
+
 ## Example
 
 [Click here](https://vincentpat.github.io/vue-data-form/)
