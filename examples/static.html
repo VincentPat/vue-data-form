@@ -38,38 +38,32 @@
                             "id": "title",
                             "type": "input",
                             "name": "标题",
-                            "dist": {
-                                "value": "VUE-DATA-FORM"
-                            }
+                            "value": "VUE-DATA-FORM"
                         },
                         {
                             "id": "subTitle",
                             "type": "input",
                             "name": "副标题",
-                            "dist": {
-                                "value": "这是一个神奇的表单"
-                            }
+                            "value": "这是一个神奇的表单"
                         },
                         {
                             "id": "desc",
                             "type": "input",
                             "name": "描述",
-                            "dist": {
-                                "value": "这都是根据配置表来渲染的，不需要写js代码"
-                            }
+                            "value": "这都是根据配置表来渲染的，不需要写js代码"
                         }
                     ]
                 }
             },
             methods: {
                 focus: function(data) {
-                    console.log('Focus:' + data.id);
+                    console.log('Focus: ' + JSON.stringify(data));
                 },
                 blur: function(data) {
-                    console.log('Blur:' + data.id);
+                    console.log('Blur: ' + JSON.stringify(data));
                 },
                 change: function(data) {
-                    console.log('Change:' + JSON.stringify(data));
+                    console.log('Change: ' + JSON.stringify(data));
                 },
                 save: function(data) {
                     alert('Result:\n' + JSON.stringify(data));

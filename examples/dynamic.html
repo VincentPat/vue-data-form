@@ -91,18 +91,18 @@
             },
             data: function() {
                 return {
-                    input: '[{"id":"title","type":"input","name":"标题","dist":{"value":"VUE-DATA-FORM"}},{"id":"subTitle","type":"input","name":"副标题","dist":{"value":"这是一个神奇的表单"}},{"id":"desc","type":"input","name":"描述","dist":{"value":"这都是根据配置表来渲染的，不需要写js代码"}}]',
+                    input: '[{"id":"title","type":"input","name":"标题","value":"VUE-DATA-FORM"},{"id":"subTitle","type":"input","name":"副标题","value":"这是一个神奇的表单"},{"id":"desc","type":"input","name":"描述","value":"这都是根据配置表来渲染的，不需要写js代码"}]',
                     output: '',
                     elements: []
                 }
             },
             methods: {
                 // 聚焦
-                focus: function(data) {
+                focus: function(formData) {
                     var output = '';
                     output += 'Emit: focus\n';
                     output += 'Focus:\n';
-                    output += data.id;
+                    output += JSON.stringify(formData);
                     output += '\n';
                     output += '\n';
                     this.print(output);
