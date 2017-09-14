@@ -17,7 +17,13 @@
             <vue-data-form
                 id="myForm"
                 title="数据表单"
-                :elements="elements"></vue-data-form>
+                :elements="elements"
+                @focus="focus"
+                @blur="blur"
+                @change="change"
+                @save="save"
+                @reset="reset">
+            </vue-data-form>
         </div>
         <script>
         new Vue({
@@ -53,6 +59,23 @@
                             }
                         }
                     ]
+                }
+            },
+            methods: {
+                focus: function(data) {
+                    console.log('Focus:' + data.id);
+                },
+                blur: function(data) {
+                    console.log('Blur:' + data.id);
+                },
+                change: function(data) {
+                    console.log('Change:' + JSON.stringify(data));
+                },
+                save: function(data) {
+                    alert('Result:\n' + JSON.stringify(data));
+                },
+                reset: function() {
+                    alert('Reset!');
                 }
             }
         });

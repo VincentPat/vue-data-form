@@ -2,6 +2,7 @@
     <div class="vdf-input">
         <el-input
             v-model="value"
+            @focus="focus"
             @blur="blur"></el-input>
     </div>
 </template>
@@ -16,22 +17,28 @@ export default {
     },
     data() {
         return {
-            value: this.config.dist.value
+            value: this.config.value
         };
     },
     methods: {
-        blur() {
-            this.$emit('change', {
-                id: this.config.id,
-                value: this.value,
-                property: 'value'
+        focus() {
+            this.$emit('focus', {
+                id: this.config.id
             });
+        },
+        blur() {
+            this.$emit('blur', {
+                id: this.config.id
+            });            
+            this.$emit('change', Object.assign({}, this.config, {
+                value: this.value
+            }));
         }
     },
     watch: {
         config: {
-            handler: function(value) {
-                this.value = this.config.dist.value;
+            handler() {
+                this.value = this.config.value;
             },
             deep: true
         }

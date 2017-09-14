@@ -19,11 +19,20 @@ window.example = new Vue({
             elements: exampleConfig
         },
         on: {
+            focus: (result) => {
+                console.log('聚焦', result);
+            },
+            blur: (result) => {
+                console.log('失焦', result);
+            },
+            change: (result) => {
+                console.log('变更', result);
+            },
             save: (result) => {
                 console.log('保存数据', result);
             },
-            reset: () => {
-                console.log('重置数据');
+            reset: (result) => {
+                console.log('重置数据', result);
             }
         },
         ref: 'form'

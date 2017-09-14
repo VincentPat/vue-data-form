@@ -69,6 +69,9 @@
                         id="myForm"
                         title="数据表单"
                         :elements="elements"
+                        @focus="focus"
+                        @blur="blur"
+                        @change="change"
                         @save="save"
                         @reset="reset"></vue-data-form>
                 </el-col>
@@ -94,11 +97,41 @@
                 }
             },
             methods: {
+                // 聚焦
+                focus: function(data) {
+                    var output = '';
+                    output += 'Emit: focus\n';
+                    output += 'Focus:\n';
+                    output += data.id;
+                    output += '\n';
+                    output += '\n';
+                    this.print(output);
+                },
+                // 变更
+                change: function(formData) {
+                    var output = '';
+                    output += 'Emit: change\n';
+                    output += 'Change:\n';
+                    output += JSON.stringify(formData);
+                    output += '\n';
+                    output += '\n';
+                    this.print(output);
+                },
+                // 失焦
+                blur: function(formData) {
+                    var output = '';
+                    output += 'Emit: blur\n';
+                    output += 'Blur:\n';
+                    output += JSON.stringify(formData);
+                    output += '\n';
+                    output += '\n';
+                    this.print(output);
+                },
                 // 保存
                 save: function(formData) {
                     var output = '';
-                    output += 'Emit：save\n';
-                    output += '输出结果：\n';
+                    output += 'Emit: save\n';
+                    output += 'Result:\n';
                     output += JSON.stringify(formData);
                     output += '\n';
                     output += '\n';
@@ -107,13 +140,14 @@
                 // 重置
                 reset: function(formData) {
                     var output = '';
-                    output += 'Emit：reset\n';
-                    output += '输出结果：\n';
+                    output += 'Emit: reset\n';
+                    output += 'Result:\n';
                     output += JSON.stringify(formData);
                     output += '\n';
                     output += '\n';
                     this.print(output);
                 },
+                // 打印
                 print: function(content) {
                     this.output += content;
                     var self = this;

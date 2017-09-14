@@ -1,5 +1,10 @@
 {
     "title": "vue-data-form",
     "author": "VincentPat",
-    "language": "zh-CN"
+    "language": "zh-CN",
+    "plugins": [
+        "multipart",
+        "include-codeblock",
+        "back-to-top-button"
+    ]
 }

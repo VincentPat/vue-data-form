@@ -10,6 +10,12 @@ export default {
     methods: {
         change(data) {
             this.$emit('change', data);
+        },
+        focus(data) {
+            this.$emit('focus', data);
+        },
+        blur(data) {
+            this.$emit('blur', data);
         }
     },
     props: {
@@ -24,7 +30,9 @@ export default {
     render: function render(h) {
         const elementNode = h(`vdf-${this.config.type}`, {
             on: {
-                change: this.change
+                change: this.change,
+                focus: this.focus,
+                blur: this.blur
             },
             props: { config: this.config }
         });

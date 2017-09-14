@@ -4,8 +4,8 @@
 
 Name | Params | Description
 :--- | :--- | :---
-focus | id:string | emit when the cursor focus on form items.
-blur | id:string | emit when the cursor leaves.
-change | id:string, value:Any | emit when a element's value changed.
+focus | id:String | emit when the cursor focus on form items.
+blur | id:String | emit when the cursor leaves.
+change | id:String, value:Any | emit when a element's value changed.
 save | data:Object | emit when submit button is clicked.
 reset | data:Object | emit when reset button is clicked.

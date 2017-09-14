@@ -14,6 +14,8 @@
             <vdf-element
                 v-for="(element, index) in config"
                 @change="change"
+                @focus="focus"
+                @blur="blur"
                 :labelWidth="labelWidth"
                 :key="index"
                 :config="element"></vdf-element>
@@ -56,53 +58,68 @@ export default {
     data() {
         return {
             config: [],
-            dist: {},
-            initialDist: {}
+            value: {},
+            initialValue: {}
         };
     },
     methods: {
         // 变更事件
         change(data) {
-            this.dist[data.id][data.property] = data.value;
+            this.value[data.id] = data.value;
+            this.config[data.index].value = data.value;
+            this.$emit('change', data);
+        },
+        // 聚焦事件
+        focus(data) {
+            this.$emit('focus', data);
+        },
+        // 失焦事件
+        blur(data) {
+            this.$emit('blur', data);
         },
         // 设置最终输出数据
-        setDist() {
-            this.config.forEach((element) => {
-                this.$set(this.dist, element.id, Object.assign({}, element.dist));
-            });
-            this.config.forEach((element) => {
-                this.$set(this.initialDist, element.id, Object.assign({}, element.dist));
+        setValue() {
+            this.config.forEach((element, index) => {
+                element.index = index;
+                this.$set(this.value, element.id, element.value);
+                this.$set(this.initialValue, element.id, element.value);
             });
         },
         // 保存
         save() {
-            this.$emit('save', this.dist);
+            this.$emit('save', this.value);
         },
         // 重置
         reset() {
             this.config.forEach((element, index) => {
                 const id = element.id;
-                const data = this.initialDist[id];
+                const data = this.initialValue[id];
                 // 编辑数据
-                element.dist = Object.assign({}, data);
+                element.value = data;
                 // 输出数据
-                this.dist[id] = Object.assign({}, data);
+                this.value[id] = data;
             });
-            this.$emit('reset', this.dist);
+            this.$emit('reset', this.value);
         },
         // 检查elements是否符合
         checkElements() {
             const o = this.elements.filter((item) => typeof item !== 'object').length <= 0;
-            if (!o) return false;
+            if (!o) {
+                console.error('Config Error: element shoud be an object.');
+                return false;
+            }
             const t = this.elements.filter((item) => typeof item.type !== 'string').length <= 0;
-            if (!t) return false;
+            if (!t) {
+                console.error('Config Error: element\'s type should be a string!');
+                return false;
+            }
             return true;
         },
         // 初始化
         init() {
             if (this.checkElements()) {
                 this.config = this.elements;
-                this.setDist();
+                this.setValue();
             }
         }
     },
